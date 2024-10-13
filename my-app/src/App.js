@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Loans from './pages/loans';
+import Loans from './pages/Loans';
 import FindHomes from './pages/FindHomes';
 import Paperwork from './pages/Paperwork';
 import Header from './components/Header';
 import Landing from './pages/Landing';
+import Footer from './components/Footer';
 function App() {
   return (
     <Router>

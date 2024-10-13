@@ -3,6 +3,7 @@ import Modal from '../components/Modal';
 import '../pages/styles/paperwork.css'
 import Button from '../components/Button';
 import { motion } from 'framer-motion';
+import Footer from '../components/Footer';
 
 function Paperwork() {
   // List of required documents for a loan
@@ -86,6 +87,7 @@ function Paperwork() {
   };
 
   return (
+    <>
     <motion.div 
     variants={checkListVariant}
     initial="hidden"
@@ -120,6 +122,8 @@ This resource will make it easier for you to stay organized. Refer to the checkl
 
       <Modal show={isModalOpen} complete={allChecked} handleClose={handleCloseModal} />
     </motion.div>
+          <Footer/>
+          </>
   );
 }
 
