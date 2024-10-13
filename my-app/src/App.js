@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Loans from './pages/Loans';
+import Loans from './pages/loans';
 import FindHomes from './pages/FindHomes';
 import Paperwork from './pages/Paperwork';
 import Header from './components/Header';
