@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/home';
 import Loans from './pages/loans';
-import Mortgage from './pages/Mortgage';
+import FindHomes from './pages/FindHomes';
 import Paperwork from './pages/Paperwork';
 import Header from './components/Header';
+import Landing from './pages/Landing';
 function App() {
   return (
     <Router>
           <Header/>
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
+        <Route path="/" element={<Landing/>}></Route>
         <Route path="/loans" element={<Loans/>}></Route>
-        <Route path="/mortgage" element={<Mortgage/>}></Route>
+        <Route path="/findHomes" element={<FindHomes/>}></Route>
         <Route path="/paperwork" element={<Paperwork/>}></Route>
       </Routes>
     </Router>

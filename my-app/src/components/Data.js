@@ -1,45 +1,62 @@
 import React, { useEffect, useState } from 'react';
 
-function Data({ location }) {
-    const [suggestions, setSuggestions] = useState([]);
+function Data({ data }) {
+    const { city, state, zipcode, bedrooms } = data;
+    const [houses, setHouses] = useState([]);
 
+    // Base URL for the API 
+    const baseUrl = 'https://api.rentcast.io/v1/properties';
+    const apiKey = process.env.REACT_APP_API_KEY; 
+    // Make dynamic URL
+    const buildUrl = () => {
+        const url = new URL(baseUrl);
+
+        // Required parameters 
+        if (city) url.searchParams.append('city', city);
+        if (state) url.searchParams.append('state', state);
+
+        // Optional parameters 
+        if (zipcode) url.searchParams.append('zipcode', bedrooms);
+        if (bedrooms) url.searchParams.append('bedrooms', bedrooms);
+        url.searchParams.append('limit', 12); 
+        return url;
+    };
+
+    //Fetch the data 
     useEffect(() => {
         const fetchData = async () => {
-            const url = `https://zillow-com1.p.rapidapi.com/locationSuggestions?q=${location}`; // Use location from props
-            const options = {
-                method: 'GET',
-                headers: {
-                    'x-rapidapi-key': 'cf0dca6a52msh56581ed4ce77ddfp11219fjsn6daa4f933d96',
-                    'x-rapidapi-host': 'zillow-com1.p.rapidapi.com',
-                },
-            };
-
+            const url = buildUrl(); 
             try {
-                const response = await fetch(url, options);
-                const result = await response.json(); // Convert to JSON since you're using it as an object
-                setSuggestions(result.suggestions || []); // Assuming the response has a `suggestions` key
+                const res = await fetch(url, {
+                    headers: {
+                        'X-Api-Key': apiKey, 
+                        'Accept': 'application/json'
+                    },
+                });
+                const data = await res.json();
+                setHouses(data); 
             } catch (error) {
-                console.error("Error fetching data:", error);
+                console.error('Error fetching data:', error);
             }
         };
 
-        if (location) {
-            fetchData();
-        }
-    }, [location]); // Trigger the fetch when `location` changes
-
+        fetchData();
+    }, [city, state, zipcode, bedrooms]); 
+    //printing results in table format
     return (
-        <div className="house-container">
-            {suggestions.length > 0 ? (
-                suggestions.map((house, index) => (
-                    <div className="house-card" key={index}>
-                        <h3>{house.name}</h3> {/* Assuming there's a `name` or city property */}
-                        <p>{house.region}</p> {/* Adjust based on the actual data fields */}
-                    </div>
-                ))
-            ) : (
-                <p>No results found for {location}</p>
-            )}
+        <div className="house-list">
+            <table className='house-container'>
+                {houses.map((item) => {
+                    return (
+                        <div className='house-card' key={item.id}>
+                                <h3>{item.formattedAddress}</h3>
+                                <p>Property Type: {item.propertyType}</p>
+                                <p>Bathrooms: {item.bathrooms}</p>
+                                <p>Year built: {item.yearBuilt}</p>
+                        </div>
+                    );
+                })}
+            </table>
         </div>
     );
 }

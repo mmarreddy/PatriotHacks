@@ -11,14 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.header{
+  display:flex;
+  justify-content: center;
+  gap: 5%;
+  background-color: #2E3061;
+}
+.header-item{
+  padding-left: 20px;
+  padding-right: 20px;
+  display:flex;
+  align-items: baseline;
+}
+
+#logo{
+  font-family: 'karla';
+  padding-top:10px;
+}
+
 h1{
   color: #fff;
-  font-family: 'playfair display';
+  font-family: 'karla';
   text-align: left;
 }
 
 .nav{
-  background-color: #2E3061;
   padding: 10px;
   display: flex;
   justify-content:right

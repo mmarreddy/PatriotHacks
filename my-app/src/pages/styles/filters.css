@@ -1,0 +1,60 @@
+.form-items-container{
+    display:flex;
+    flex-wrap: wrap;
+    padding: 0px 200px 0px 200px;
+    justify-content: center;
+    gap:1.5%
+}
+  .form-item {
+    display: flex;
+    align-items: center; 
+}
+.form-item label {
+    margin-right: 0.25rem; 
+    white-space: nowrap; 
+}
+input[type="text"],
+input[type="number"] {
+    padding: 2px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    min-width: 150px; 
+}
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #007bff;
+    outline: none; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.house-container {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    padding: 20px 60px 20px 60px; 
+}
+
+.house-card {
+    background-color: #ffedcb5f; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    padding: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s; 
+}
+
+.house-card:hover {
+    transform: translateY(-5px); 
+}
+
+/* responsive design */
+@media (max-width: 768px) {
+    .house-container {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 480px) {
+    .house-container {
+        grid-template-columns: 1fr; 
+    }
+}

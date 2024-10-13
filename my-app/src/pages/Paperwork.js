@@ -1,24 +1,68 @@
 import React, { useState } from 'react';
-import Modal from '../components/Modal'; // Import the Modal component
+import Modal from '../components/Modal'; 
+import '../pages/styles/paperwork.css'
+import Button from '../components/Button';
+import { motion } from 'framer-motion';
 
 function Paperwork() {
   // List of required documents for a loan
-  const documents = [
-    'Proof of Income',
-    'Credit Report',
-    'Bank Statements',
-    'Identification (ID or Passport)',
-    'Employment Verification',
-    'Tax Returns',
-    'Debt Information',
-    'Property Appraisal',
+  const documentCategories = [
+    {
+      title: 'Identification',
+      documents: [
+        'ID or passport',
+        'Social Security Card',
+        'Past few residential addresses',
+      ],
+    },
+    {
+      title: 'Proof of Employment',
+      documents: [
+        'Pay stubs',
+        'W-2 tax returns',
+      ],
+    },
+    {
+      title: 'Bank Statements (for past 1-2 months)',
+      documents: [
+        'Checking account  ',
+        'Savings account',
+        'Debit account',
+        'Personal business/income documents'
+      ],
+    },
+    {
+      title: 'Investments',
+      documents: [
+        'Investment, retirement, trust, and any other financial account statements',
+        'Vehicle ownership information'
+      ],
+    },
+    {
+      title: 'Debts',
+      documents: [
+        'Student, credit, or any other loan related statements',
+      ],
+    },
   ];
 
-  // State to track checked items
+  const checkListVariant = {
+    hidden: { opacity: 0, y: -100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.75, // Increase duration for a slower effect
+        ease: [0.68, -0.55, 0.27, 1.55], 
+    }
+  }
+  }
+
+//Checking and unchecking state
   const [checkedItems, setCheckedItems] = useState({});
   const [isModalOpen, setModalOpen] = useState(false);
 
-  // Handle checkbox change
+//checking action
   const handleCheckboxChange = (document) => {
     setCheckedItems((prev) => ({
       ...prev,
@@ -26,15 +70,15 @@ function Paperwork() {
     }));
   };
 
-  // Check if all documents are checked
-  const allChecked = documents.every((doc) => checkedItems[doc]);
 
-  // Handle submit when all items are checked
+  const allChecked = Object.keys(checkedItems).length === 
+  documentCategories.reduce((sum, category) => sum + category.documents.length, 0) &&
+  Object.values(checkedItems).every(checked => checked);
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (allChecked) {
-      setModalOpen(true); // Open the modal
-    }
+      setModalOpen(true); 
   };
 
   const handleCloseModal = () => {
@@ -42,26 +86,40 @@ function Paperwork() {
   };
 
   return (
-    <div>
-      <h1>Loan Document Checklist</h1>
-      <form onSubmit={handleSubmit}>
-        {documents.map((document, index) => (
+    <motion.div 
+    variants={checkListVariant}
+    initial="hidden"
+    animate="visible">
+      <h2 style={{textAlign:'center'}}>Drowning in Documents?...Lets Break it down</h2>
+      <p style={{textAlign:'center', padding:'0px 200px 0px 200px'}}>The homebuying process can be an exciting yet complex journey, requiring you to be well-prepared with a variety of paperwork and documents. Don't be overwhelming just yet, there’s no need to stress. We’ve created a detailed checklist to help you navigate through these requirements with clarity.
+
+This resource will make it easier for you to stay organized. Refer to the checklist below to ensure you have everything ready for a smooth homebuying experience!</p>
+
+      <form 
+      className='checkList' 
+      onSubmit={handleSubmit}
+      >
+        {documentCategories.map((category, index) => (
           <div key={index}>
-            <input
-              type="checkbox"
-              id={document}
-              checked={checkedItems[document] || false}
-              onChange={() => handleCheckboxChange(document)}
-            />
-            <label htmlFor={document}>{document}</label>
+            <h3>{category.title}</h3>
+            {category.documents.map((document, docIndex) => (
+              <div key={docIndex}>
+                <input
+                  type="checkbox"
+                  id={document}
+                  checked={checkedItems[document] || false}
+                  onChange={() => handleCheckboxChange(document)}
+                />
+                <label htmlFor={document}>{document}</label>
+              </div>
+            ))}
           </div>
         ))}
-        <button type="submit" >Check Preparedness</button>
+        <Button title="Check Preparedness" color="#fff" type='submit'/>
       </form>
 
-      {/* Modal component that shows when all items are checked */}
-      <Modal show={isModalOpen} handleClose={handleCloseModal} />
-    </div>
+      <Modal show={isModalOpen} complete={allChecked} handleClose={handleCloseModal} />
+    </motion.div>
   );
 }
 
