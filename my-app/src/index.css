@@ -84,9 +84,12 @@ p{
   .nav.open{
     display:flex;
     background: #2E3061;
-    position: relative;
-    right: 0px;
-    width: 70%;
+    position: absolute;
+    top: 60px; 
+    right: 0; 
+    width: 50%;
+    z-index: 1;
+    padding: 20px 0; 
     text-align: right;
   }
 

@@ -49,6 +49,11 @@ h2{
 @media (max-width: 768px) {
   #info-section{
     padding-left: 10px;
-    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #info-section{
+    padding-left: 60px;
   }
 }
