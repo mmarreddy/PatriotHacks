@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 const style1 = {
     display:'flex',
     justifyContent: 'center',
@@ -11,8 +12,9 @@ const style1 = {
 const Footer = () => {
   return (
     <div style={style1} className='footer'>
-         2024 Key to Ownership
+         2024 Buyer's Guide
         <br></br>Designed for PatriotHacks
+        <Link to="/references">References</Link>
     </div>
   )
 }

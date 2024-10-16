@@ -88,15 +88,12 @@ function Paperwork() {
 
   return (
     <>
-    <motion.div 
-    variants={checkListVariant}
-    initial="hidden"
-    animate="visible">
+    <div>
+    <motion.div variants={checkListVariant} initial="hidden" animate="visible"  >
       <h2 style={{textAlign:'center'}}>Drowning in Documents?...Lets Break it down</h2>
       <p style={{textAlign:'center', padding:'0px 200px 0px 200px'}}>The homebuying process can be an exciting yet complex journey, requiring you to be well-prepared with a variety of paperwork and documents. Don't be overwhelming just yet, there’s no need to stress. We’ve created a detailed checklist to help you navigate through these requirements with clarity.
-
-This resource will make it easier for you to stay organized. Refer to the checklist below to ensure you have everything ready for a smooth homebuying experience!</p>
-
+      This resource will make it easier for you to stay organized. Refer to the checklist below to ensure you have everything ready for a smooth homebuying experience!</p>
+    </motion.div>
       <form 
       className='checkList' 
       onSubmit={handleSubmit}
@@ -121,7 +118,7 @@ This resource will make it easier for you to stay organized. Refer to the checkl
       </form>
 
       <Modal show={isModalOpen} complete={allChecked} handleClose={handleCloseModal} />
-    </motion.div>
+    </div>
           <Footer/>
           </>
   );

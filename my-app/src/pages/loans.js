@@ -1,6 +1,26 @@
 import React from 'react'
+import { motion } from 'framer-motion';
 
 function Loans() {
+  const containerVariant = {
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      }
+    },
+  }
+  const cardVariant = {
+    hidden: { opacity: 0, y: 10 }, 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.1,        
+        ease: "easeIn",    
+      },
+    },
+  };
+
   const loanOptions = [
     {
       title: 'Conventional Loans',
@@ -62,11 +82,14 @@ function Loans() {
 
 
   return (
-    <div>
+    <motion.div variants={containerVariant}  initial="hidden" animate="visible" >
       <h2 style={{textAlign:'center'}} >Financing your home</h2>
       <div className="house-container">
         {loanOptions.map((option, index) => (
-          <div className="house-card" key={index}>
+          <motion.div  
+          variants={cardVariant}
+          className="house-card" 
+          key={index}>
             <h3>{option.title}</h3>
             <p>{option.description}</p>
             <div>
@@ -76,10 +99,10 @@ function Loans() {
                     </a>
                 ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
 

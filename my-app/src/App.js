@@ -5,6 +5,7 @@ import Paperwork from './pages/Paperwork';
 import Header from './components/Header';
 import Landing from './pages/Landing';
 import Footer from './components/Footer';
+import References from './components/References';
 function App() {
   return (
     <Router>
@@ -14,6 +15,8 @@ function App() {
         <Route path="/loans" element={<Loans/>}></Route>
         <Route path="/findHomes" element={<FindHomes/>}></Route>
         <Route path="/paperwork" element={<Paperwork/>}></Route>
+        <Route path="/references" element={<References/>}></Route>
+
       </Routes>
     </Router>
   );

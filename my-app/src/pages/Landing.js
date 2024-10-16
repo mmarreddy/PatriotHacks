@@ -23,7 +23,7 @@ const Home = () => {
       opacity: 1,
       x: 0,
       transition: {
-        delay: index * 0.5, 
+        delay: index * 0.3, 
         duration: 0.5,        
         ease: "easeInOut",    
       },
@@ -39,7 +39,7 @@ const Home = () => {
             initial="hidden"
             animate="visible"
           >
-            <span style={{ fontStyle: 'italic', color: 'black' }}>First Time</span> Home
+            <span style={{ fontStyle: 'italic', color: 'black', fontSize: '46px' }}>First Time</span> Home
             <br />
             Buyer?
             <br />
