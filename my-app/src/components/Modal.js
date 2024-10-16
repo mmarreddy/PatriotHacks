@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from './Button';
 import '../pages/styles/modal.css';
 const Modal = ({ show, complete, handleClose }) => {
   if (!show) {
