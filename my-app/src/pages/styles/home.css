@@ -45,3 +45,10 @@ h2{
   flex-direction: column; 
   flex: 0 1 auto;
 }
+
+@media (max-width: 768px) {
+  #info-section{
+    padding-left: 10px;
+    text-align: center;
+  }
+}
