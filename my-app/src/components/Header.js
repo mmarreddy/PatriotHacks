@@ -2,12 +2,12 @@ import React from 'react'
 import "../index"
 import{Link} from "react-router-dom"
 import '../index.css'
-
+import logo from '../assets/logo.png'
 const Header = () => {
   return (
     <div className='header'>
       <div className='header-item'>
-      <h1 id='logo'>Buyers Guide</h1>
+      <img src={logo} style={{ width: '200px', height: '115px' }} alt="Logo" />
       </div>
         <div className='header-item'>
         <nav className='nav'>
