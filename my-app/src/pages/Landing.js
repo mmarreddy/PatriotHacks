@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Infographic from '../components/Infographic';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
+import key_img from '../assets/key.jpg'
 
 const Home = () => {
   // animation variants
@@ -32,19 +33,20 @@ const Home = () => {
 
   return (
     <>
-      <div className='container'>
-        <div className='container-item'>
-          <motion.h2
+    <motion.h2
+            id = 'heading'
             variants={textVariants}
             initial="hidden"
             animate="visible"
           >
-            <span style={{ fontStyle: 'italic', color: 'black', fontSize: '46px' }}>First Time</span> Home
-            <br />
-            Buyer?
-            <br />
-            <span style={{ fontStyle: 'italic', color: '#FDCE78' }}>No Worries</span>
+            <span style={{ color: 'black' }}>First Time</span> Home
+            Buyer? 
+            <span style={{ fontStyle: 'italic', color: '#FDCE78' }}> No Worries</span>
           </motion.h2>
+      <div className='container'>
+        <div className='container-item'>
+          <img src={key_img} className='responsive-img' alt="keys" />
+
         </div>
         <div className='container-item'>
           <p style={{paddingLeft:'35px'}}>Our Tools</p>

@@ -14,12 +14,18 @@ h2{
   font-size: 40px;
 }
 
+#heading{
+  text-align: center;
+  padding-top: 50px;
+}
+
 .container{
   display:flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  gap: 15%
+  padding: 0px 10px 100px 10px;
+  gap: 10%
 }
 
 .container:nth-of-type(3) {
@@ -45,15 +51,33 @@ h2{
   flex-direction: column; 
   flex: 0 1 auto;
 }
+.responsive-img {
+  width: 100%;   
+  height: auto;  
+  max-width: 450px; 
+}
 
 @media (max-width: 768px) {
+  .container {
+    flex-direction: column; 
+  }
+
   #info-section{
     padding-left: 10px;
   }
+
+  .responsive-img {
+    max-width: 350px; 
+    height: 
+  }
+
 }
 
 @media (max-width: 480px) {
   #info-section{
     padding-left: 100px;
+  }
+  .responsive-img {
+    max-width: 250px; 
   }
 }
