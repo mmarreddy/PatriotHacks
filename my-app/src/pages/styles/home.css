@@ -58,7 +58,7 @@ h2{
 }
 
 @media (max-width: 768px) {
-  .container {
+  .container:nth-of-type(2) {
     flex-direction: column; 
   }
 
